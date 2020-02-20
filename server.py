@@ -94,11 +94,16 @@ def delete_handler():
 def search_handler():
     img, bs = get_image('url', 'image')
     ao = request.form.get('all_orientations', all_orientations) == 'true'
+    try:
+        pf = json.loads(request.form['pre_filter'])
+    except KeyError:
+        pf = None
 
     matches = ses.search_image(
             path=img,
             all_orientations=ao,
-            bytestream=bs)
+            bytestream=bs,
+            pre_filter=pf)
 
     return json.dumps({
         'status': 'ok',
