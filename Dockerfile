@@ -3,11 +3,11 @@ MAINTAINER Alex Kern <alex@distributedsystems.com>
 
 RUN apt-get update && \
     apt-get install -y libopenblas-dev gfortran && \
-    pip install numpy==1.12.1 && \
+    pip install --upgrade numpy && \
     pip install scipy==0.19.0 && \
     pip install gunicorn==19.7.1 && \
     pip install flask==0.12.2 && \
-    pip install image-match==1.1.2 && \
+    pip install git+https://github.com/Likibu/image-match.git@master && \
     pip install 'elasticsearch>=6.0.0,<7.0.0' && \
     rm -rf /var/lib/apt/lists/*
 
